@@ -162,6 +162,7 @@ def create_sales_invoice(order_no):
 		submit_invoice = frappe.db.get_value("Connector Setting","Connector Setting","submit_invoice")
 		si_doc = frappe.get_doc(dict(
 			doctype = "Sales Invoice",
+			company = order_doc.company,
 			customer = customer_id,
 			is_return = is_return,
 			items = items,

@@ -141,7 +141,7 @@
    "width": "50%"
   },
   {
-   "default": "A & M Group Company",
+   "default": "Koperasi Permodalan Felda",
    "fieldname": "company",
    "fieldtype": "Data",
    "in_standard_filter": 1,
@@ -565,10 +565,11 @@
  ],
  "icon": "fa fa-file-text",
  "links": [],
- "modified": "2023-04-02 11:11:53.247148",
+ "modified": "2023-05-22 14:06:29.626264",
  "modified_by": "Administrator",
  "module": "Connector",
  "name": "Connector Sales Order",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -629,6 +630,7 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "title",
  "track_changes": 1,
  "track_seen": 1
