@@ -125,13 +125,13 @@ def create_sales_invoice(order_no):
 		customer_id = check_customer(order_doc)
 		if not customer_id:
 			customer_id = 'Cash Customer'
-		source_warehouse = frappe.db.get_value('Warehouse',{'warehouse_name':order_doc.set_warehouse})
+		source_warehouse = frappe.db.get_value('Warehouse',{'name':order_doc.set_warehouse})
 		if not source_warehouse:
 			frappe.throw("Warehouse - {0} not found".format(order_doc.set_warehouse))
-		cost_center = frappe.db.get_value('Cost Center',{'cost_center_name':order_doc.set_warehouse})
+		cost_center = frappe.db.get_value('Cost Center',{'name':order_doc.set_warehouse})
 		if order_doc.company:
-			source_warehouse = frappe.db.get_value('Warehouse',{'warehouse_name':order_doc.set_warehouse,'company':order_doc.company})
-			cost_center = frappe.db.get_value('Cost Center',{'cost_center_name':order_doc.set_warehouse,'company':order_doc.company})
+			source_warehouse = frappe.db.get_value('Warehouse',{'name':order_doc.set_warehouse,'company':order_doc.company})
+			cost_center = frappe.db.get_value('Cost Center',{'name':order_doc.set_warehouse,'company':order_doc.company})
 		if not cost_center:
 			frappe.throw("Cost Center - {0} not found".format(order_doc.cost_center))
 		if order_doc.order_type in [ "store_account_payment","Store Account Payment"]:

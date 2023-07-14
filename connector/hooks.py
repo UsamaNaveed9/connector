@@ -80,9 +80,9 @@ app_license = "MIT"
 # Hook on document methods and events
 
 doc_events = {
-	"Sales Order": {
-		"on_submit": "connector.api.on_submit"
-	},
+	# "Sales Order": {
+	# 	"on_submit": "connector.api.on_submit"
+	# },
 	"Sales Invoice": {
 		"on_cancel": "connector.api.on_cancel"
 	}
