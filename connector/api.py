@@ -118,6 +118,7 @@ def create_sales_invoice(order_no):
 			si_doc.save(ignore_permissions = True)
 			si_doc.cancel()
 		is_return = 0
+		is_pos = 1
 		if not order_doc.set_warehouse:
 			frappe.throw("No Source Warehouse is selected")
 		# if not order_doc.cost_center:
@@ -143,8 +144,11 @@ def create_sales_invoice(order_no):
 #			is_return = 1
 #			create_sales_return(order_doc,items,cost_center,source_warehouse)
 #			return True
-		if order_doc.order_type == "return":
+		if order_doc.order_type == "return" or order_doc.order_type == "Return":
 			is_return = 1
+			is_pos = 0
+			for it in items:
+				it["qty"] = -(it["qty"])
 #			create_sales_return(order_doc,items)
 #			tl = 0
 #			for row in order_doc.items:
@@ -166,7 +170,7 @@ def create_sales_invoice(order_no):
 			is_return = is_return,
 			items = items,
 			update_stock = 1,
-			is_pos = 1,
+			is_pos = is_pos,
 			connector_address_line1 = order_doc.address_line1,
 			connector_address_line2 = order_doc.address_line2,
 			connector_city = order_doc.city or 'NA',
